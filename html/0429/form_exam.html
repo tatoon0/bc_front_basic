@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<!--  input type
+      text
+      button
+      checkbox
+      file
+      hidden
+      image
+      password
+      radio
+      reset
+      submit
+-->
+<!--  textarea : cls/rows : 여려행 글자입력
+               : cols 너비, rosw 높이 지정
+      select : 선택 양식 생성
+      select : optgroup : 옵션 그룹화
+      select : option : 선택 옵션 생성
+      fieldset : 입력 양식의 그룹 지정
+      legend : 입력 양식 그룹 이름 지정
+
+-->
+
+  <form style="padding-left: 10px" action="#" method="get">
+    <fieldset>
+      <legend>입력양식</legend>
+      <label for="name">이름</label>
+      <input id="name" type="text">
+      <br>
+      <label for="pwd">비밀번호</label>
+      <input id="pwd" type="password">
+      <br>
+      <label for="email">이메일</label>
+      <input id="email" type="email">
+      <br>
+      <label for="file">파일 선택</label>
+      <input id="file" type="file">
+      <br>
+      <h4>취미</h4>
+      <label for="sports">스포츠</label>
+      <input id="sports" name="hobby" type="checkbox" value="sports">
+      <label for="game">게임</label>
+      <input id="game" name="hobby" type="checkbox" value="game">
+      <br>
+      <h4>성별</h4>
+      <label for="male">남성</label>
+      <input id="male" name="gender" type="radio" value="male">
+      <label for="female">여성</label>
+      <input id="female" name="gender" type="radio" value="female">
+      <br>
+      <label for="food">좋아하는 음식</label>
+      <select name="food" id="food">
+        <option value="김밥">김밥</option>
+        <option value="떡볶이">떡볶이</option>
+        <option value="튀김">튀김</option>
+      </select>
+      <br>
+      <label for="intro">자기소개</label> <br>
+      <textarea name="intro" id="intro" cols="30" rows="10"></textarea>
+      <br>
+      <label for="reset">초기화</label>
+      <input id="reset" type="reset">
+      <label for="submit">전송</label>
+      <input id="submit" type="submit">
+    </fieldset>
+  </form>
+</body>
+</html>
