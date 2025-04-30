@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #box {
+      /* inline은 width와 height를 지정할 수 없지만
+      inline-block은 block의 속성을 가지고 있으므로 inline이면서 크기 지정이 가능함 */
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      background-color: violet;
+    }
+    span {
+      background-color: pink;
+    }
+  </style>
+</head>
+<body>
+  <span>더미 객체</span>
+  <div id="box">대상 객체</div>
+  <span>더미 객체</span>
+</body>
+</html>

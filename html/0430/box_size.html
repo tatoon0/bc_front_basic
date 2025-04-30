@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .box2 {
+      width: 100px;
+      height: 100px;
+      border: 3px dotted blueviolet;
+      background-color: pink;
+      /* 값이 1개일 경우 전 방향 */
+      /*padding: 20px;*/
+      /*margin: 20px;*/
+      /* 값이 2개일 경우 세로, 가로 */
+      /*margin: 10px 40px;*/
+      /* 값이 4개일 경우 위쪽(혹은 10시)부터 시계방향 */
+      margin: 10px 0 0 40px;
+    }
+    .box {
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+    }
+    .border1 {
+      border: 4px solid black;
+    }
+    .border2 {
+      border: 4px dotted black;
+    }
+    .border3 {
+      border: 4px dashed black;
+    }
+    .border_radius_20 {
+      border-radius: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box border1 border_radius_20">
+    content
+  </div>
+  <div class="box border2 border_radius_20">
+    content
+  </div>
+  <div class="box border3 border_radius_20">
+    content
+  </div>
+  <div class="box2 border_radius_20">
+    content
+  </div>
+</body>
+</html>
