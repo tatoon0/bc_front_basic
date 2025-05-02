@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <form action="#" method="get">
+    <label for="height">키 : </label>
+    <input id="height" type="number" step="0.01"> <br>
+    <label for="weight">몸무게 : </label>
+    <input id="weight" type="number"> <br>
+    <button onclick="calculate()">계산하기</button>
+  </form>
+  <hr>
+  <h3>결과창</h3>
+  <h1>결과창</h1>
+  <hr>
+  <button onclick="reset()">초기화</button>
+  <script>
+    function calculate () {
+      let height = document.querySelector("#height").value;
+      let weight = document.querySelector("#weight").value;
+      let result = weight / height / height
+      document.querySelector("body h3").innerText = result;
+
+      if (result < 18.5 ) {
+        document.querySelector("body h1").innerText = "저체중입니다";
+      } else if (result < 23) {
+        document.querySelector("body h1").innerText = "정상입니다";
+      } else if (result < 25) {
+        document.querySelector("body h1").innerText = "과체중입니다";
+      } else {
+        document.querySelector("body h1").innerText = "비만입니다";
+      }
+    }
+
+    function reset() {
+      let reset = confirm("초기화 하시겠습니까?")
+      if (reset) {
+        location.reload();
+      }
+    }
+
+  </script>
+</body>
+</html>
