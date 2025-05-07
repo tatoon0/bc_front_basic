@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button onclick="select('햄버거')">햄버거</button>
+<button onclick="select('피자')">피자</button>
+<button onclick="select('감자튀김')">감자튀김</button>
+<hr>
+<div></div>
+<script>
+  function select(menu) {
+    // alert(menu)
+    if (menu === '햄버거') {
+      document.querySelector('div').innerHTML = "<img src='//i.namu.wiki/i/JV3gBFPeoIuU95FnRD0yX26gsoZYRbj-lYZyxCZ-nMRTMKdGnOUJEpblrH3_3OX8UelwhK5o9_G1VPd9LQ8h6kwISb_gameMgUzStOxmz-iZEJYwZHNG6F4ik4JOu7cAEi2mfQwmayqCk0u6ZYLRVQ.webp\'>"
+    } else if (menu === '피자') {
+      document.querySelector('div').innerHTML = "<img src='//i.namu.wiki/i/gFscr8_pP5KWn81JUOf2vu95qu9MW8AddmDTSHINfDE7_nvcLeVNPWaSYAsNe4d29ewbJRnmV9FsVB_zkfYJHCWVfkuyJdPSMkXl-ONW4rBzwRo5j_sgOynDXzA39tj5VfMt_YryyboM4dfNXxwXYA.webp\'>"
+    } else {
+      document.querySelector('div').innerHTML = "<img src='//i.namu.wiki/i/yELIVxB1Z_rJbmsw7EZ9q7TrWasKzmThIH99oOUXsggFkSsiWb_inVuinltL1Pv3GA7j6SSSbhyqyORRNoeSytxmQ-zEZxgqu2qVErMnbpXh6R6Lf1NPf2uxfbgwjwtHcwLH8PgO3q9tgfqEa-44UQ.webp\'>"
+    }
+  }
+</script>
+</body>
+</html>
