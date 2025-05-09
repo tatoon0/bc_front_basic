@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<label for="user_id">아이디 : </label><input id="user_id" type="text" value="홍길동"> <br>
+<label for="user_pw">비밀번호 : </label><input id="user_pw" type="password" value="1234"> <br>
+<button onclick="login()">로그인</button>
+  <script>
+    let user_id = document.getElementById("user_id")
+    let user_pw = document.getElementById("user_pw")
+
+    let id = "홍길동"
+    let pw = "1234"
+    function login() {
+      // alert(user_id.value)
+      // alert(user_pw.value)
+      if (id == user_id.value && pw == user_pw.value) {
+        alert('로그인 성공')
+      } else {
+        alert('로그인 실패')
+      }
+    }
+  </script>
+</body>
+</html>

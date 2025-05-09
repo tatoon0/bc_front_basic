@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    #note {
+      background-color: yellow;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id="note" class="book"></div>
+<button onclick="backBtn()">뒤로가기</button>
+<a href="history_ob.html">이동</a>
+</body>
+<script>
+  let note = document.getElementById('note')
+  let book = document.querySelector(".book")
+
+  note.innerText = 'hello'
+
+  function backBtn() {
+    history.back()
+  }
+</script>
+</html>
