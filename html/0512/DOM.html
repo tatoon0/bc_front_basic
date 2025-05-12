@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/exam1.css">
+</head>
+<body>
+<div>
+  값
+</div>
+<hr>
+<p id="ide"></p>
+
+<h1>태그1</h1>
+<h1 class="h1tag">태그2</h1>
+<h1 class="h1tag">태그3</h1>
+
+<input name='age' value="400">
+<input name='age' value="5">
+<input name='age' value="4">
+
+<select onchange="set(this.value)" id="menu">
+  <option>치킨</option>
+  <option>피자</option>
+  <option>돈까스</option>
+</select>
+<button onclick="addmenu()">메뉴추가</button>
+<div id="result"></div>
+<script>
+  let ptag = document.getElementById('ide');
+  console.log(ptag)
+  ptag.innerText='홍길동'
+
+  let h2tag = document.getElementsByClassName('h1tag')
+  h2tag[0].innerHTML = '가나다'
+
+  let tags = document.getElementsByTagName("h1")
+  tags[0].style.backgroundColor = 'pink'
+
+  let input = document.getElementsByName('age')
+  console.log(input[2].value)
+
+  function set(val) {
+    document.getElementById('result').innerText = val;
+  }
+
+  function addmenu() {
+    document.getElementById('menu').innerHTML += "<option>추가된 메뉴</option>"
+  }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/exam1.css">
+</head>
+<body>
+<label>
+  <textarea cols="30" rows="10">텍스트텍스트텍스트</textarea>
+</label>
+<br>
+<input onclick="copy()" type="button" value="값 작성">
+<div id="result"></div>
+
+<script>
+  function copy() {
+    let result = document.querySelector("textarea")
+    document.getElementById('result').innerText = result.value;
+  }
+</script>
+</body>
+</html>

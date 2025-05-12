@@ -1,0 +1,19 @@
+body, textarea, table, td {
+  font-size: 20px;
+  color: black;
+  padding: 12px 25px;
+  border: 2px solid pink;
+  margin: 10px;
+  border-radius: 20px;
+}
+
+input, select, button {
+  font-size: 16px;
+  color: black;
+  padding: 5px 10px;
+  margin: 10px;
+}
+
+hr {
+  border: 2px dotted red;
+}

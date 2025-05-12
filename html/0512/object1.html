@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  let person = {
+    name : "김정훈",
+    age : 25
+  }
+
+  // alert(person.name)
+
+  let sin = new Object();
+  sin.name = "신짱구"
+  sin.age = 5;
+
+  // alert(sin.name)
+
+  function Board(title, content, writer) {
+    this.title = title;
+    this.content = content;
+    this.writer = writer;
+
+    this.print = function () {
+      document.write(title, content, writer)
+    }
+  }
+
+  let a = new Board('제목', '내용','작성자')
+  a.print();
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+
+  class Person {
+    constructor(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    intro() {
+      document.write(this.name, this.age)
+    }
+  }
+
+  let kjh = new Person('김정훈', 25)
+  kjh.intro();
+
+  class Student extends Person {
+    constructor(name, age, ban) {
+      super(name, age);
+      this.ban = ban;
+    }
+
+    intro() {
+      document.write(this.name, this.age, this.ban)
+    }
+  }
+
+  let sin = new Student('신짱구',5,'해바라기')
+  sin.intro();
+
+</script>
+</body>
+</html>
