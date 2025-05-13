@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>신짱구</h1>
+<h2>신짱아</h2>
+<h3>홍길동</h3>
+
+<script>
+  let h1tag = $('h1')
+  let h2tag = $('h2')
+  let h3tag = $('h3')
+
+  h1tag.on('click', function () {
+    alert(h1tag.text())
+  })
+  h2tag.on('mouseover', function() {
+    alert(h2tag.text())
+  })
+  h3tag.on('click', function(e) {
+    alert(e.target.innerText)
+  })
+
+  // 그룹선택
+  let alltag = $('h1, h2, h3')
+  alltag.on('click', function() {
+    alert(alltag.text())
+  })
+
+  // 인접선택
+  h1tag.next().css("color", "green")
+</script>
+</body>
+</html>

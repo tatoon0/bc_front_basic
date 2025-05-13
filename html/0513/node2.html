@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="/css/exam1.css">
+</head>
+<body>
+<button onclick="strInput()">str inner html</button>
+<button onclick="nodeInput()">node append</button>
+<div id="result"></div>
+<script>
+  let result = document.getElementById('result')
+  function strInput() {
+    result.innerHTML += '<input value = "홍길동">'
+  }
+  function nodeInput() {
+    let node = document.createElement('input')
+    node.value = '홍길동'
+    result.appendChild(node)
+  }
+</script>
+</body>
+</html>

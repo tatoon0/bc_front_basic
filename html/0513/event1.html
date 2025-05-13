@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<button value="103" id="click">클릭</button>
+<button onmouseover="print()" id="over">오버</button>
+<div id="result"></div>
+<script>
+  let clickBtn = document.getElementById('click')
+  let result = document.getElementById('result')
+  clickBtn.addEventListener('click', function (e) {
+    console.log(e.target.innerText)
+    console.log(e.target.value)
+    print()
+  })
+  function print() {
+    document.getElementById('result').innerHTML += 'text '
+  }
+</script>
+</body>
+</html>
