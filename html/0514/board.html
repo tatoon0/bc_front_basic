@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="kr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <style>
+    #register {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<!--글 쓰기 창 ver.1-->
+<div id="register" class="container mt-5 mb-5 p-5 text-center border border-primary rounded">
+  <div class="row mb-3">
+    <div class="col">
+      <div class="mb-3">
+        <label for="title" class="form-label">제목</label>
+        <input id="title" type="text" class="form-control">
+      </div>
+    </div>
+    <div class="col">
+      <div class="mb-3">
+        <label for="writer" class="form-label">작성자</label>
+        <input id="writer" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <input id="content" type="text" class="form-control">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--글 쓰기 창 ver.2-->
+<div id="registerA">
+
+</div>
+
+<!--modal-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">글 작성하기</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="registerB" class="container p-5 text-center">
+          <div class="row mb-3">
+            <div class="col">
+              <div class="mb-3">
+                <label for="titleB" class="form-label">제목</label>
+                <input id="titleB" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-3">
+                <label for="writerB" class="form-label">작성자</label>
+                <input id="writerB" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="mb-3">
+                <label for="contentB" class="form-label">내용</label>
+                <input id="contentB" type="text" class="form-control">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+        <button id="rbtnB" type="button" class="btn btn-primary" data-bs-dismiss="modal" value="0">글 저장</button>
+        <button id="remove" type="button" class="btn btn-danger" data-bs-dismiss="modal" value="0" hidden="hidden">글 삭제</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--글 수정 창-->
+<div id="update">
+
+</div>
+
+<!--버튼-->
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col d-flex justify-content-center">
+      <button id="rbtn" class="btn btn-primary" value="0">등록</button>
+    </div>
+    <div class="col d-flex justify-content-center">
+      <button id="rbtnA" class="btn btn-primary">등록A</button>
+    </div>
+    <!-- Button trigger modal -->
+    <div class="col d-flex justify-content-center">
+      <button id="rbtnC" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        등록B
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--글 목록-->
+<div class="table-responsive">
+  <table class="table text-center table-hover" style=" table-layout: fixed">
+    <thead>
+      <tr>
+        <th>제목</th>
+        <th>내용</th>
+        <th>작성자</th>
+      </tr>
+    </thead>
+    <tbody id="tbodyTag">
+      <tr>
+        <td>안녕하세요</td>
+        <td>내용 작성</td>
+        <td>홍길동</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<script>
+  let register = document.querySelector('#register')
+  let registerA = document.querySelector('#registerA')
+  let update = document.querySelector('#update')
+
+  let title = document.querySelector('#title')
+  let writer = document.querySelector('#writer')
+  let content = document.querySelector('#content')
+  let titleB = document.querySelector('#titleB')
+  let writerB = document.querySelector('#writerB')
+  let contentB = document.querySelector('#contentB')
+
+  let rbtn = document.querySelector('#rbtn')
+  let rbtnA = document.querySelector('#rbtnA')
+  let rbtnB = document.querySelector('#rbtnB')
+  let rbtnC = document.querySelector('#rbtnC')
+  let remove = document.querySelector('#remove')
+
+  let tbodyTag = document.querySelector('#tbodyTag')
+
+  const myModalEl = document.getElementById('exampleModal')
+  const modalLabel = document.getElementById('exampleModalLabel')
+
+  // 모달 닫힐 때
+  myModalEl.addEventListener('hidden.bs.modal', event => {
+    titleB.value = ''
+    writerB.value = ''
+    contentB.value = ''
+    remove.hidden = true
+  })
+
+  let titleTd
+  let contentTd
+  let writerTd
+
+  // 글 등록 ver.1
+  rbtn.addEventListener('click', function() {
+    if (this.value == '0') {
+      update.innerHTML = ''
+      registerA.innerHTML = ''
+      rbtnA.innerText = '등록A'
+      rbtnA.value = 0
+
+      register.style.display = 'block'
+      this.innerText = '글 저장'
+      this.value = '1'
+    } else {
+      register.style.display = 'none'
+      this.innerText = '등록'
+      this.value = '0'
+
+      tbodyTag.innerHTML += `
+        <tr>
+          <td>${title.value}</td>
+          <td>${content.value}</td>
+          <td>${writer.value}</td>
+        </tr>
+      `
+
+      title.value = ''
+      writer.value = ''
+      content.value = ''
+    }
+  })
+
+  // 글 등록 ver.2
+  rbtnA.addEventListener('click', function () {
+    if (this.value == 0) {
+      register.style.display = 'none'
+      rbtn.innerText = '등록'
+      rbtn.value = '0'
+      update.innerHTML = ''
+      title.value = ''
+      writer.value = ''
+      content.value = ''
+
+      registerA.innerHTML = `
+      <div class="container mt-5 mb-5 p-5 text-center border border-primary rounded">
+        <div class="row mb-3">
+          <div class="col">
+            <div class="mb-3">
+              <label for="titleA" class="form-label">제목</label>
+              <input id="titleA" type="text" class="form-control">
+            </div>
+          </div>
+          <div class="col">
+            <div class="mb-3">
+              <label for="writerA" class="form-label">작성자</label>
+              <input id="writerA" type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="mb-3">
+              <label for="contentA" class="form-label">내용</label>
+              <input id="contentA" type="text" class="form-control">
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+      this.innerText = '글 저장A'
+      this.value = 1
+
+    } else {
+      // value가 1이면 입력된 값 저장
+      let titleA = document.querySelector('#titleA')
+      let contentA = document.querySelector('#contentA')
+      let writerA = document.querySelector('#writerA')
+
+      tbodyTag.innerHTML += `
+      <tr>
+        <td>${titleA.value}</td>
+        <td>${contentA.value}</td>
+        <td>${writerA.value}</td>
+      </tr>
+    `
+
+      registerA.innerHTML = ''
+      this.innerText = '등록A'
+      this.value = 0
+    }
+
+  })
+
+  // 글 등록 ver.modal
+  rbtnC.addEventListener('click', function() {
+    rbtnB.value = '0'
+    rbtnB.innerText = '글 저장'
+    modalLabel.innerText = '글 등록하기'
+  })
+
+  // 글 클릭 시
+  tbodyTag.addEventListener('click',  function(e) {
+    if(e.target.tagName == 'TD') {
+    //   register.style.display = 'none'
+    //   registerA.innerHTML = ''
+    //   update.innerHTML = `
+    //   <div class="container mt-5 mb-5 p-5 text-center border border-primary rounded">
+    //     <div class="row mb-3">
+    //       <div class="col">
+    //         <div class="mb-3">
+    //           <label for="titleU" class="form-label">제목</label>
+    //           <input id="titleU" type="text" class="form-control" value="${e.target.parentElement.children[0].innerText}">
+    //         </div>
+    //       </div>
+    //       <div class="col">
+    //         <div class="mb-3">
+    //           <label for="writerU" class="form-label">작성자</label>
+    //           <input id="writerU" type="text" class="form-control" value="${e.target.parentElement.children[1].innerText}">
+    //         </div>
+    //       </div>
+    //     </div>
+    //     <div class="row">
+    //       <div class="col">
+    //         <div class="mb-3">
+    //           <label for="contentU" class="form-label">내용</label>
+    //           <input id="contentU" type="text" class="form-control" value="${e.target.parentElement.children[2].innerText}">
+    //         </div>
+    //       </div>
+    //     </div>
+    //     <div class="row">
+    //       <div class="col d-flex justify-content-center">
+    //         <button class="btn btn-primary" value="0">수정</button>
+    //       </div>
+    //       <div class="col d-flex justify-content-center">
+    //         <button class="btn btn-primary">취소</button>
+    //       </div>
+    //     </div>
+    //   </div>
+    // `
+
+      titleTd = e.target.parentElement.children[0]
+      contentTd = e.target.parentElement.children[1]
+      writerTd = e.target.parentElement.children[2]
+
+      const myModalAlternative = new bootstrap.Modal('#exampleModal')
+      titleB.value = titleTd.innerText
+      contentB.value = contentTd.innerText
+      writerB.value = writerTd.innerText
+      rbtnB.value = '1'
+      rbtnB.innerText = '글 수정'
+      modalLabel.innerText = '글 수정하기'
+      remove.hidden = false
+      myModalAlternative.show()
+
+      console.log(e.target.parentElement.children[0])
+    }
+
+  })
+
+  // 수정 버튼 클릭시
+  document.body.addEventListener('click', function(e) {
+    if (e.target.tagName == "BUTTON" && e.target.innerText == '수정') {
+      let titleU = document.querySelector('#titleU')
+      let contentU = document.querySelector('#contentU')
+      let writerU = document.querySelector('#writerU')
+
+      titleTd.innerText = titleU.value
+      contentTd.innerText = contentU.value
+      writerTd.innerText = writerU.value
+
+      update.innerHTML = ''
+    }
+  })
+
+  // modal 확인버튼
+  rbtnB.addEventListener('click', function(e){
+    if (e.target.value == '0'){
+      tbodyTag.innerHTML += `
+        <tr>
+          <td>${titleB.value}</td>
+          <td>${contentB.value}</td>
+          <td>${writerB.value}</td>
+        </tr>
+      `
+    }
+    if (e.target.value == '1') {
+      titleTd.innerText = titleB.value
+      contentTd.innerText = contentB.value
+      writerTd.innerText = writerB.value
+    }
+  })
+
+  // modal 삭제버튼
+  remove.addEventListener('click', function (e) {
+    titleTd.parentElement.remove()
+  });
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
