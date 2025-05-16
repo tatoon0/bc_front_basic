@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1>탐색 선택자</h1>
+  <ul id="menu">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+<script>
+  $('#menu li:first').css('background-color', 'red')
+  $('#menu li:last').css('background-color', 'red')
+  $('#menu li:nth-child(2n+1)').css('color', 'green')
+  $('#menu li:even').css('color', 'pink')
+  $('#menu li:odd').css('color', 'green')
+
+  let litag = $('#menu li:lt(2)')
+  console.log(litag)
+
+</script>
+</body>
+</html>

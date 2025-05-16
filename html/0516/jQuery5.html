@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="sign">
+  <input type="names" id="names" class="names" value="홍길동">
+</div>
+<script>
+  console.log($('.names').val())
+  console.log($('#names').val())
+  let sign = $('#sign')
+
+  let str = sign.html()
+  console.log(str)
+  str += `<input type="password" value="1234">`
+  sign.html(str)
+
+  console.log($('#names').attr('class'))
+
+  $('#names').attr('class', 'teset')
+  console.log($('#names').attr('class'))
+
+  $('#names').removeAttr('class')
+  console.log($('#names').attr('class'))
+
+  $('#names').attr('class','new')
+  console.log($('#names').attr('class'))
+
+  $('#names').addClass('new2')
+  console.log($('#names').attr('class'))
+
+  $('#names').removeClass('new')
+  console.log($('#names').attr('class'))
+
+  console.log($('#names').hasClass('new'))
+  console.log($('#names').hasClass('new2'))
+</script>
+</body>
+</html>
